@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <!-- Google Analytics -->
+   
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-ABC123XYZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ABC123XYZ');
+</script> -->
+
+  <link rel="icon" type="image/png" href="fav.png">
+  <title>Modules</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="betaBar" class="beta-bar">
+    <span>
+        🧪 <strong>PilotPrepHub is in Beta!</strong> &nbsp; We're actively building and improving the platform. Thanks for being an early user! ✈️
+    </span>
+
+    <button id="closeBetaBar">&times;</button>
+  </div>
+
+  <!-- <h1>Flight Prep</h1> -->
+  
+  <div class="title-banner">
+    Pilot Prep Hub
+  </div>
+
+
+  <h2>Choose Your Module</h2>
+  <div id="subjects">
+  
+  <!-- <button onclick="goToQuiz('regulation')">Air Regulation</button> -->
+  <!-- <button onclick="showSubSubjects('regulation')">Air Regulation</button>   -->
+  <!-- <button onclick="goToQuiz('meteorology')">Aviation Meteorology</button> -->
+  <!-- <button onclick="goToQuiz('general')">General Navigation</button> -->
+  <!-- <button onclick="goToQuiz('instrument')">Instrument Navigation</button> -->
+  <!-- <button onclick="goToQuiz('radio')">Radio Navigation</button> -->
+
+  <button onclick="showSubSubjects('regulation', event)">Air Regulation</button>
+  <button onclick="showSubSubjects('meteorology', event)">Aviation Meteorology</button>
+  <button onclick="showSubSubjects('general_navigation', event)">General Navigation</button>
+  <button onclick="showSubSubjects('instrument_navigation', event)">Instrument Navigation</button>
+  <button onclick="showSubSubjects('radio_navigation', event)">Radio Navigation</button>
+  <button onclick="showSubSubjects('technical_general', event)">Technical General</button>
+  <button onclick="showSubSubjects('technical_specific', event)">Technical Specific</button>
+  <!-- <button onclick="goToQuiz('RTR')">RTR</button> -->
+  <!-- <button onclick="showSubSubjects('FRTOL', event)">FRTOL</button> -->
+  
+  </div>
+
+  <hr>
+  <hr>
+
+  <div id="question"></div>
+  <div id="options"></div>
+  <div id="subSubjects"></div>
+
+  <!-- <button onclick="nextQuestion()">Next</button> -->
+
+  
+<!-- Regulations -->
+
+<!-- OXFORD -->
+<script src="questions/Air_Regulation/Oxford/1_international_agreements_and_organizations.js"></script>
+<script src="questions/Air_Regulation/Oxford/2_airworthiness_of_aircraft.js"></script>
+<script src="questions/Air_Regulation/Oxford/3_aircraft_nationality_and_registration_marks.js"></script>
+<script src="questions/Air_Regulation/Oxford/4_flight_crew_licensing.js"></script>
+<script src="questions/Air_Regulation/Oxford/5_rules_of_the_air.js"></script>
+<script src="questions/Air_Regulation/Oxford/6_instrument_procedures.js"></script>
+<script src="questions/Air_Regulation/Oxford/7_approach_procedures.js"></script>
+<script src="questions/Air_Regulation/Oxford/8_circling_approach.js"></script>
+<script src="questions/Air_Regulation/Oxford/9_holding_procedures.js"></script>
+<script src="questions/Air_Regulation/Oxford/10_altimeter_setting_procedure.js"></script>
+<script src="questions/Air_Regulation/Oxford/11_parallel_or_near_parallel_runway_operation.js"></script>
+<script src="questions/Air_Regulation/Oxford/12_ssr_and_acas.js"></script>
+<script src="questions/Air_Regulation/Oxford/13_airspace.js"></script>
+<script src="questions/Air_Regulation/Oxford/14_air_traffic_services.js"></script>
+<script src="questions/Air_Regulation/Oxford/15_separation.js"></script>
+<script src="questions/Air_Regulation/Oxford/16_control_of_aircraft.js"></script>
+<script src="questions/Air_Regulation/Oxford/17_aeronautical_information_service.js"></script>
+<script src="questions/Air_Regulation/Oxford/18_aerodromes_physical_characteristics.js"></script>
+<script src="questions/Air_Regulation/Oxford/19_aerodromes_visual_aids_markings_and_signs.js"></script>
+<script src="questions/Air_Regulation/Oxford/20_aerodrome_lighting.js"></script>
+<script src="questions/Air_Regulation/Oxford/21_obstacle_marking_and_aerodrome_services.js"></script>
+<script src="questions/Air_Regulation/Oxford/22_facilitation.js"></script>
+<script src="questions/Air_Regulation/Oxford/23_search_and_rescue.js"></script>
+<script src="questions/Air_Regulation/Oxford/24_security.js"></script>
+<script src="questions/Air_Regulation/Oxford/25_aircraft_accident_and_incident_investigation.js"></script>
+<script src="questions/Air_Regulation/Oxford/26_revision_questions.js"></script>
+
+
+<!-- RK Bali -->
+<script src="questions/Air_Regulation/RK_Bali/1_international_organisations_and_conventions.js"></script>
+<script src="questions/Air_Regulation/RK_Bali/2_aircraft_nationality_and_registration_marks.js"></script>
+<script src="questions/Air_Regulation/RK_Bali/3_rules_of_the_air.js"></script>
+<script src="questions/Air_Regulation/RK_Bali/4_air_traffic_services.js"></script>
+<script src="questions/Air_Regulation/RK_Bali/5_separation_methods_and_minima.js"></script>
+<script src="questions/Air_Regulation/RK_Bali/6_separation_in_the_vicinity_of_aerodromes.js"></script>
+<script src="questions/Air_Regulation/RK_Bali/7_procedures_for_aerodrome_control_service.js"></script>
+<script src="questions/Air_Regulation/RK_Bali/8_use_of_air_traffic_services_surveillance_system.js"></script>
+<script src="questions/Air_Regulation/RK_Bali/9_aeronautical_information_services.js"></script>
+<script src="questions/Air_Regulation/RK_Bali/10_search_and_rescue.js"></script>
+<script src="questions/Air_Regulation/RK_Bali/11_visual_aids_for_navigation.js"></script>
+<script src="questions/Air_Regulation/RK_Bali/12_procedures_for_air_navigation_services.js"></script>
+<script src="questions/Air_Regulation/RK_Bali/13_national_law.js"></script>
+<script src="questions/Air_Regulation/RK_Bali/14_personnel_licensing.js"></script>
+<script src="questions/Air_Regulation/RK_Bali/15_airworthiness_of_aircraft.js"></script>
+<script src="questions/Air_Regulation/RK_Bali/16_operational_procedures.js"></script>
+<script src="questions/Air_Regulation/RK_Bali/17_special_operational_procedures_and_hazards.js"></script>
+<script src="questions/Air_Regulation/RK_Bali/18_communications.js"></script>
+<script src="questions/Air_Regulation/RK_Bali/19_aircraft_accident_and_incident.js"></script>
+<script src="questions/Air_Regulation/RK_Bali/20_facilitation.js"></script>
+<script src="questions/Air_Regulation/RK_Bali/21_security.js"></script>
+
+
+<!-- RK Bali Human Factors-->
+<!-- <script src="questions/Air_Regulation/RK_Bali_Human_factors/1_human_performance_and_limitations.js"></script> -->
+<!-- <script src="questions/Air_Regulation/RK_Bali_Human_factors/2_crm_tem_loft.js"></script> -->
+<!-- <script src="questions/Air_Regulation/RK_Bali_Human_factors/3_aviation_psychology.js"></script> -->
+<!-- <script src="questions/Air_Regulation/RK_Bali_Human_factors/4_aviation_pshysiology.js"></script> -->
+<script src="questions/Air_Regulation/RK_Bali_Human_factors/5_additional_practice_questions.js"></script>
+
+
+<!-- RK Bali SQP-->
+<script src="questions/Air_Regulation/RK_Bali_SQP/1_SQP.js"></script>
+<script src="questions/Air_Regulation/RK_Bali_SQP/2_SQP.js"></script>
+<script src="questions/Air_Regulation/RK_Bali_SQP/3_SQP.js"></script>
+<script src="questions/Air_Regulation/RK_Bali_SQP/4_SQP.js"></script>
+<script src="questions/Air_Regulation/RK_Bali_SQP/5_SQP.js"></script>
+<script src="questions/Air_Regulation/RK_Bali_SQP/6_SQP.js"></script>
+<script src="questions/Air_Regulation/RK_Bali_SQP/7_SQP.js"></script>
+<script src="questions/Air_Regulation/RK_Bali_SQP/8_SQP.js"></script>
+<script src="questions/Air_Regulation/RK_Bali_SQP/9_SQP.js"></script>
+<script src="questions/Air_Regulation/RK_Bali_SQP/10_SQP.js"></script>
+<script src="questions/Air_Regulation/RK_Bali_SQP/11_SQP.js"></script>
+<script src="questions/Air_Regulation/RK_Bali_SQP/12_SQP.js"></script>
+<script src="questions/Air_Regulation/RK_Bali_SQP/13_SQP.js"></script>
+<script src="questions/Air_Regulation/RK_Bali_SQP/14_SQP.js"></script>
+<script src="questions/Air_Regulation/RK_Bali_SQP/15_SQP.js"></script>
+<script src="questions/Air_Regulation/RK_Bali_SQP/16_SQP.js"></script>
+
+
+<!-- Red Bird -->
+ <script src="questions/Air_Regulation/Red_Bird/1_red_bird.js"></script>
+
+
+<!--For Testing -->
+<!-- <script src="questions/Air_Regulation/Testing/area_control.js"></script>
+<script src="questions/Air_Regulation/Testing/ats.js"></script>
+<script src="questions/Air_Regulation/Testing/human_performance.js"></script>
+<script src="questions/Air_Regulation/Testing/regulatory_methods.js"></script>
+<script src="questions/Air_Regulation/Testing/safety.js"></script>
+<script src="questions/Air_Regulation/Testing/taxiway_runway.js"></script>
+<script src="questions/Air_Regulation/Testing/revision.js"></script> -->
+
+
+
+
+<!-- Meteorology -->
+
+<!-- IC Joshi -->
+<script src="questions/Meteorology/meteorology_sample.js"></script>
+<script src="questions/Meteorology/IC_Joshi/1_Atmosphere.js"></script>
+<script src="questions/Meteorology/IC_Joshi/2_Pressure.js"></script>
+<script src="questions/Meteorology/IC_Joshi/3_Temperature.js"></script>
+<script src="questions/Meteorology/IC_Joshi/4_Density.js"></script>
+<script src="questions/Meteorology/IC_Joshi/5_Humidity.js"></script>
+<script src="questions/Meteorology/IC_Joshi/6_Winds.js"></script>
+<script src="questions/Meteorology/IC_Joshi/7_Visibility_and_fog.js"></script>
+<script src="questions/Meteorology/IC_Joshi/8_Vertical_Motion_and_Clouds.js"></script>
+<script src="questions/Meteorology/IC_Joshi/9_Stability_and_Instability_of_Atmosphere.js"></script>
+<script src="questions/Meteorology/IC_Joshi/10_Optical_Phenomena.js"></script>
+<script src="questions/Meteorology/IC_Joshi/11_Precipitation.js"></script>
+<script src="questions/Meteorology/IC_Joshi/12_Ice_Accretion.js"></script>
+<script src="questions/Meteorology/IC_Joshi/13_Thunderstorm.js"></script>
+<script src="questions/Meteorology/IC_Joshi/14_Air_Masses_Fronts_and_Western_Disturbances.js"></script>
+<script src="questions/Meteorology/IC_Joshi/15_Jet_Streams.js"></script>
+<script src="questions/Meteorology/IC_Joshi/16_Clear_Air_Turbulence.js"></script>
+<script src="questions/Meteorology/IC_Joshi/17_Mountain_Waves.js"></script>
+<script src="questions/Meteorology/IC_Joshi/18_Tropical_Systems.js"></script>
+<script src="questions/Meteorology/IC_Joshi/19_Climatology_of_India.js"></script>
+<script src="questions/Meteorology/IC_Joshi/20_General_Circulation.js"></script>
+<script src="questions/Meteorology/IC_Joshi/21_Met_services_for_aviation.js"></script>
+
+
+<!-- Oxford -->
+<script src="questions/Meteorology/Oxford/1_Atmosphere.js"></script>
+<script src="questions/Meteorology/Oxford/2_Pressure.js"></script>
+<script src="questions/Meteorology/Oxford/3_Density.js"></script>
+<script src="questions/Meteorology/Oxford/4_Pressure_system.js"></script>
+<script src="questions/Meteorology/Oxford/5_Altimetry.js"></script>
+<script src="questions/Meteorology/Oxford/6_Temperature.js"></script>
+<script src="questions/Meteorology/Oxford/7_Humidity.js"></script>
+<script src="questions/Meteorology/Oxford/8_Adiabatics_and_Stability.js"></script>
+<script src="questions/Meteorology/Oxford/9_Winds.js"></script>
+<script src="questions/Meteorology/Oxford/10_Upper_Winds.js"></script>
+<script src="questions/Meteorology/Oxford/11_Clouds.js"></script>
+<script src="questions/Meteorology/Oxford/12_Thunderstorms.js"></script>
+<script src="questions/Meteorology/Oxford/13_Visibility.js"></script>
+<script src="questions/Meteorology/Oxford/14_Icing.js"></script>
+<script src="questions/Meteorology/Oxford/15_Air_mass.js"></script>
+<script src="questions/Meteorology/Oxford/16_Other_Depressions.js"></script>
+<script src="questions/Meteorology/Oxford/17_Global_climatology.js"></script>
+
+
+
+
+<!-- General Navigation -->
+
+<!-- Oxford -->
+<script src="questions/Navigation/Navigation_General/Oxford/1_direction_latitude_and_longitude.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/2_great_circles_rhumb_lines_&_directions_on_the_earth.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/3_earth_magnetism.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/4_slide_rule_face.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/5_distance_speed_time_and_conversions.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/6_tas_and_altitude_corrections.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/7_triangle_of_velocities.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/8_calculation_of_heading_and_wind_finding.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/9_multi_drift_winds_and_wind_components.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/10_the_1_in_60_rule.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/11_navigation_using_the_1_in_60_rule.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/12_other_applications_of_the_1_in_60_rule.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/13_topographical_maps_and_map_reading.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/14_convergency_and_conversion_angle.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/15_departure.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/16_scale.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/17_general_chart_properties.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/18_mercator_charts_properties.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/19_mercator_charts_scale.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/20_mid_latitude_scale.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/21_lamberts_conformal_chart_1.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/22_lamberts_conformal_chart_2.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/23_the_polar_stereographic_chart.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/24_time_1.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/25_time_2.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/26_time_3.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/27_gridded_charts.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/28_plotting.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/29_the_direct_indicating_compass.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/30_aircraft_magnetism.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/31_general_navigation_problems.js"></script>
+<script src="questions/Navigation/Navigation_General/Oxford/32_revision_questions.js"></script>
+
+
+<!-- RK Bali -->
+<script src="questions/Navigation/Navigation_General/RK_Bali/1_the_solar_system.js"></script>
+<script src="questions/Navigation/Navigation_General/RK_Bali/2_the_earth.js"></script>
+<script src="questions/Navigation/Navigation_General/RK_Bali/3_projections.js"></script>
+<script src="questions/Navigation/Navigation_General/RK_Bali/4_convergency.js"></script>
+<script src="questions/Navigation/Navigation_General/RK_Bali/5_time.js"></script>
+<script src="questions/Navigation/Navigation_General/RK_Bali/6_compass_and_directions.js"></script>
+<script src="questions/Navigation/Navigation_General/RK_Bali/7_distances_on_earth_surface.js"></script>
+<script src="questions/Navigation/Navigation_General/RK_Bali/8_magnetism_and_compasses.js"></script>
+<script src="questions/Navigation/Navigation_General/RK_Bali/9_dead_reckoning_navigation.js"></script>
+<script src="questions/Navigation/Navigation_General/RK_Bali/10_measurement_of_dr_elements_pressure.js"></script>
+<script src="questions/Navigation/Navigation_General/RK_Bali/11_measurement_determination_of_temperature.js"></script>
+<script src="questions/Navigation/Navigation_General/RK_Bali/12_measurement_of_elements.js"></script>
+<script src="questions/Navigation/Navigation_General/RK_Bali/13_in_flight_navigation.js"></script>
+<script src="questions/Navigation/Navigation_General/RK_Bali/14_mass_and_balance.js"></script>
+<script src="questions/Navigation/Navigation_General/RK_Bali/15_performance.js"></script>
+<script src="questions/Navigation/Navigation_General/RK_Bali/16_flight_planning_and_monitoring.js"></script>
+
+
+
+
+<!-- Instrument Navigation -->
+
+<!-- Oxford -->
+<script src="questions/Navigation/Navigation_Instrument/Oxford/1_characteristics_and_general_definitions.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/2_pitot_and_static_sources.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/3_air_temperature_measurement.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/4_the_airspeed_indicator_asi.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/5_the_pressure_altimeter.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/6_the_vertical_speed_indicator.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/7_the_machmeter.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/8_air_data_computer.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/9_terrestrial_magnetism.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/10_the_direct_indicating_compass.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/11_gyroscopes.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/12_directional_gyro_indicator_dgi.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/13_the_artificial_horizon.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/14_the_turn_and_slip_indicator.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/15_the_turn_coordinator.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/16_aircraft_magnetism.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/17_remote_indicating_magnetic_compass.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/18_inertial_navigation_systems.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/19_inertial_reference_system.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/20_radio_altimeter.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/21_flight_management_system.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/22_electronic_flight_information_systems.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/23_basic_computers.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/24_future_air_navigation_systems_fans.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/25_flight_director_systems.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/26_autopilot.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/27_autoland.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/28_autothrottle.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/29_yaw_dampers.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/30_control_laws.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/31_afcs_revision_questions.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/32_flight_warning_systems.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/33_aerodynamic_warnings.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/34_ground_proximity_warning_system_gpws.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/35_airborne_collision_and_avoidance_system_acas.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/36_flight_data_recorder.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/37_cockpit_voice_recorder.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/38_engine_instrumentation.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/39_electronic_instrumentation.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/40_revision_automatic_flight.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/41_revision_engine_instruments.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/42_revision_warnings_and_recordings.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/43_revision_1.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/44_revision_2.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/Oxford/45_revision_3.js"></script>
+
+
+<!-- RK Bali -->
+<script src="questions/Navigation/Navigation_Instrument/RK_Bali/1_air_data_systems.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/RK_Bali/2_altimeter.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/RK_Bali/3_air_speed_indicator.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/RK_Bali/4_vertical_speed_indicator.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/RK_Bali/5_gyroscope.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/RK_Bali/6_inertial_navigation.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/RK_Bali/7_altitude_alert_systems.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/RK_Bali/8_power_plant_and_system_monitoring_instruments.js"></script>
+<script src="questions/Navigation/Navigation_Instrument/RK_Bali/9_basics_of_electronic_displays.js"></script>
+
+
+
+
+<!-- Radio Navigation -->
+
+<!-- Oxford -->
+<script src="questions/Navigation/Navigation_Radio/Oxford/1_properties_of_radio_waves.js"></script>
+<script src="questions/Navigation/Navigation_Radio/Oxford/2_radio_propagation_theory.js"></script>
+<script src="questions/Navigation/Navigation_Radio/Oxford/3_modulation.js"></script>
+<script src="questions/Navigation/Navigation_Radio/Oxford/4_antennae.js"></script>
+<script src="questions/Navigation/Navigation_Radio/Oxford/5_doppler_radar_systems.js"></script>
+<script src="questions/Navigation/Navigation_Radio/Oxford/6_vhf_direction_finder_(vdf).js"></script>
+<script src="questions/Navigation/Navigation_Radio/Oxford/7_automatic_direction_finder.js"></script>
+<script src="questions/Navigation/Navigation_Radio/Oxford/8_vhf_omni_directional_range.js"></script>
+<script src="questions/Navigation/Navigation_Radio/Oxford/9_instrument_landing_system.js"></script>
+<script src="questions/Navigation/Navigation_Radio/Oxford/10_microwave_landing_system.js"></script>
+<script src="questions/Navigation/Navigation_Radio/Oxford/11_radar_principles.js"></script>
+<script src="questions/Navigation/Navigation_Radio/Oxford/12_ground_radar.js"></script>
+<script src="questions/Navigation/Navigation_Radio/Oxford/13_airborne_weather_radar.js"></script>
+<script src="questions/Navigation/Navigation_Radio/Oxford/14_secondary_surveillance_radar.js"></script>
+<script src="questions/Navigation/Navigation_Radio/Oxford/15_distance_measuring_equipment.js"></script>
+<script src="questions/Navigation/Navigation_Radio/Oxford/16_area_navigation_systems.js"></script>
+<script src="questions/Navigation/Navigation_Radio/Oxford/17_electronic_flight_information_system.js"></script>
+<script src="questions/Navigation/Navigation_Radio/Oxford/18_global_navigation_satellite_system.js"></script>
+<script src="questions/Navigation/Navigation_Radio/Oxford/19_long_range_navigation_(extra).js"></script>
+<script src="questions/Navigation/Navigation_Radio/Oxford/20_tcas_(extra).js"></script>
+<script src="questions/Navigation/Navigation_Radio/Oxford/21_revision_questions.js"></script>
+
+
+
+<!-- RK Bali -->
+<script src="questions/Navigation/Navigation_Radio/RK_Bali/1_basic_radio_theory.js"></script>
+<script src="questions/Navigation/Navigation_Radio/RK_Bali/2_adf_ndb.js"></script>
+<script src="questions/Navigation/Navigation_Radio/RK_Bali/3_track_and_drift.js"></script>
+<script src="questions/Navigation/Navigation_Radio/RK_Bali/4_vor.js"></script>
+<script src="questions/Navigation/Navigation_Radio/RK_Bali/5_vor_rmi_adf.js"></script>
+<script src="questions/Navigation/Navigation_Radio/RK_Bali/6_holding_radial_intercept_bearing_to_plot.js"></script>
+<script src="questions/Navigation/Navigation_Radio/RK_Bali/7_ils.js"></script>
+<script src="questions/Navigation/Navigation_Radio/RK_Bali/8_radar.js"></script>
+<script src="questions/Navigation/Navigation_Radio/RK_Bali/9_gnss.js"></script>
+<script src="questions/Navigation/Navigation_Radio/RK_Bali/10_summary_of_navigation_aids_and_instruments.js"></script>
+
+
+
+
+<!-- Navigation SQP -->
+<script src="questions/Navigation/SQP/1_SQP.js"></script>
+<script src="questions/Navigation/SQP/2_SQP.js"></script>
+<script src="questions/Navigation/SQP/3_SQP.js"></script>
+<script src="questions/Navigation/SQP/4_SQP.js"></script>
+<script src="questions/Navigation/SQP/5_SQP.js"></script>
+<script src="questions/Navigation/SQP/6_SQP.js"></script>
+<script src="questions/Navigation/SQP/7_SQP.js"></script>
+<script src="questions/Navigation/SQP/8_SQP.js"></script>
+
+
+
+
+<!-- Technical General -->
+
+<!-- Airframes Systems -->
+<script src="questions/Technical_General/Airframes_Systems/1_fuselage_wings_and_stabilising_surfaces.js"></script>
+<script src="questions/Technical_General/Airframes_Systems/2_basic_hydraulics.js"></script>
+<script src="questions/Technical_General/Airframes_Systems/3_landing_gear_wheels_break_tyres.js"></script>
+<script src="questions/Technical_General/Airframes_Systems/4_flight_control_system_flight_control_powered_flying_controls.js"></script>
+<script src="questions/Technical_General/Airframes_Systems/5_pneumatic_pressurisation_systems.js"></script>
+<script src="questions/Technical_General/Airframes_Systems/6_ice_and_rain_protection.js"></script>
+<script src="questions/Technical_General/Airframes_Systems/7_oxygen.js"></script>
+<script src="questions/Technical_General/Airframes_Systems/8_emergency_equipment.js"></script>
+<script src="questions/Technical_General/Airframes_Systems/9_fuel_systems.js"></script>
+<script src="questions/Technical_General/Airframes_Systems/10_smoke_detection_fire_detection_and_protection.js"></script>
+
+
+<!-- Electrics and Electronics -->
+<script src="questions/Technical_General/Electrics_and_Electronics/1_basic_principles_dc.js"></script>
+<script src="questions/Technical_General/Electrics_and_Electronics/2_electric_circuit_protection_and_capacitors.js"></script>
+<script src="questions/Technical_General/Electrics_and_Electronics/3_electric_batteries.js"></script>
+<script src="questions/Technical_General/Electrics_and_Electronics/4_electric_magnetism.js"></script>
+<script src="questions/Technical_General/Electrics_and_Electronics/5_generators_and_alternators.js"></script>
+<script src="questions/Technical_General/Electrics_and_Electronics/6_dc_motors.js"></script>
+<script src="questions/Technical_General/Electrics_and_Electronics/7_electric_power_system.js"></script>
+<script src="questions/Technical_General/Electrics_and_Electronics/8_electric_bonding_and_screening.js"></script>
+<script src="questions/Technical_General/Electrics_and_Electronics/9_electric_specimen.js"></script>
+<script src="questions/Technical_General/Electrics_and_Electronics/10_introduction_to_alternate_current.js"></script>
+<script src="questions/Technical_General/Electrics_and_Electronics/11_alternators.js"></script>
+<script src="questions/Technical_General/Electrics_and_Electronics/12_practical_aircraft_systems.js"></script>
+<script src="questions/Technical_General/Electrics_and_Electronics/13_transformers.js"></script>
+<script src="questions/Technical_General/Electrics_and_Electronics/14_ac_motors.js"></script>
+<script src="questions/Technical_General/Electrics_and_Electronics/15_basic_computers.js"></script>
+<script src="questions/Technical_General/Electrics_and_Electronics/16_logic_gates.js"></script>
+<script src="questions/Technical_General/Electrics_and_Electronics/17_radio_waves.js"></script>
+<script src="questions/Technical_General/Electrics_and_Electronics/18_radio_propagation.js"></script>
+<script src="questions/Technical_General/Electrics_and_Electronics/19_electric_modulation.js"></script>
+<script src="questions/Technical_General/Electrics_and_Electronics/20_electric_antenna.js"></script>
+<script src="questions/Technical_General/Electrics_and_Electronics/21_electric_oscillators.js"></script>
+
+
+<!-- Engines Powerplant -->
+<script src="questions/Technical_General/Engines_PowerPlant/1_general.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/2_lubrication.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/3_cooling.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/4_ignition.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/5_fuel.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/6_mixture.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/7_carburettor.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/8_fuel_injection.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/9_performance_and_power.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/10_propellor.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/11_gas_turbine_introduction.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/12_gas_turbine_inlet.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/13_gas_turbine_compressor.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/14_gas_turbine_combustion_chamber.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/15_gas_turbine_assembly.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/16_gas_turbine_exhaust_system.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/17_gas_turbine_lubrication.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/18_gas_turbine_thrust.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/19_gas_turbine_performance_and_thrust_argumentation.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/20_gas_turbine_reverse_thrust.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/21_gear_box_and_accessory_drive.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/22_gas_turbine_ignition_system.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/23_gas_turbine_auxiliary_power_unit_and_engine_starting.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/24_gas_turbine_fuel.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/25_gas_turbine_fuel_system.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/26_gas_turbine_bleed_air.js"></script>
+<script src="questions/Technical_General/Engines_PowerPlant/27_revision_questions.js"></script>
+
+
+<!-- Principles of Flight -->
+<script src="questions/Technical_General/Principles_of_Flight/1_overview.js"></script>
+<script src="questions/Technical_General/Principles_of_Flight/2_atmosphere.js"></script>
+<script src="questions/Technical_General/Principles_of_Flight/3_basic_aerodynamic_theory.js"></script>
+<script src="questions/Technical_General/Principles_of_Flight/4_sub_sonic_airflow.js"></script>
+<script src="questions/Technical_General/Principles_of_Flight/5_lift.js"></script>
+<script src="questions/Technical_General/Principles_of_Flight/6_drag.js"></script>
+<script src="questions/Technical_General/Principles_of_Flight/7_stalling.js"></script>
+<script src="questions/Technical_General/Principles_of_Flight/8_high_lift_devices.js"></script>
+<script src="questions/Technical_General/Principles_of_Flight/9_airframe_contamination.js"></script>
+<script src="questions/Technical_General/Principles_of_Flight/10_stability_and_control.js"></script>
+<script src="questions/Technical_General/Principles_of_Flight/11_controls.js"></script>
+<script src="questions/Technical_General/Principles_of_Flight/12_flight_mechanics.js"></script>
+<script src="questions/Technical_General/Principles_of_Flight/13_high_speed_flight.js"></script>
+<script src="questions/Technical_General/Principles_of_Flight/14_limitations.js"></script>
+<script src="questions/Technical_General/Principles_of_Flight/15_windshear.js"></script>
+<script src="questions/Technical_General/Principles_of_Flight/16_propellers.js"></script>
+<script src="questions/Technical_General/Principles_of_Flight/17_revision_questions.js"></script>
+
+
+<!-- Red Bird -->
+<script src="questions/Technical_General/Red_Bird/1_red_bird.js"></script>
+
+
+
+
+<!-- Technical Specific -->
+<script src="questions/Technical_Specific/baron_g58.js"></script>
+<script src="questions/Technical_Specific/cessna_152.js"></script>
+<script src="questions/Technical_Specific/cessna_172.js"></script>
+<script src="questions/Technical_Specific/da42_austro.js"></script>
+<script src="questions/Technical_Specific/da42_thielert.js"></script>
+<script src="questions/Technical_Specific/pa_3422ot.js"></script>
+<script src="questions/Technical_Specific/technam_p2006t.js"></script>
+<script src="questions/Technical_Specific/technam_p2008jc.js"></script>
+
+
+
+
+<!-- Question Bank -->
+<script src="questionBank.js"></script>
+
+<!-- MAIN SCRIPT -->
+<script src="script.js"></script>
+
+
+<footer>
+  <div class="footer-content">
+    <p>PilotPrepHub © 2026 &nbsp; |  &nbsp; Built for DGCA Aspirants</p>
+    <p>Made with ❤️ for future pilots</p>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>

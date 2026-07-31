@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="fav.png">
+<title>Privacy - PilotPrepHub</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
+}
+
+.container {
+  text-align: center;
+  padding: 60px 20px 30px;
+}
+
+h1 {
+  font-size: 42px;
+}
+
+.tagline {
+  font-size: 16px;
+  opacity: 0.85;
+  margin-bottom: 25px;
+}
+
+.section {
+  padding: 35px 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.section h2 {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.section p {
+  font-size: 15px;
+  opacity: 0.85;
+}
+
+footer {
+  background: rgba(0,0,0,0.3);
+  padding: 15px;
+  text-align: center;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+  transition: 0.8s;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Privacy Policy</h1>
+  <div class="tagline">Your data is safe 🔒</div>
+</div>
+
+<div class="section hidden">
+  <h2>Information</h2>
+  <p>We only collect minimal data to improve your experience.</p>
+</div>
+
+<div class="section hidden">
+  <h2>Usage</h2>
+  <p>Your data is never sold or shared.</p>
+</div>
+
+<div class="section hidden">
+  <h2>Security</h2>
+  <p>We take strong measures to protect your data.</p>
+</div>
+
+<footer>
+  <p>PilotPrepHub © 2026</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+});
+document.querySelectorAll(".hidden").forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
