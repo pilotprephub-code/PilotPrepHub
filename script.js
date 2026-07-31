@@ -485,7 +485,7 @@ function formatSubSubject(str) {
         "ndb", "vfr", "ifr", "vmc", "imc", "fir", "atis",
         "met", "nav", "fto", "cfi", "afi", "ame", "fmg", 
 		"rk", "ic", "da", "pa", "adf", "vhf", "rmi", "gnss",
-		"tcas", "dr", "afcs", "dc", "ac"
+		"tcas", "dr", "afcs", "dc", "ac", "ssr", "acas"
     ];
 
     return str
