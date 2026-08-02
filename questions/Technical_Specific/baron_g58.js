@@ -285,16 +285,6 @@ const tech_specific_baron_g58 =
     answer: "All are correct"
   },
   {
-    question: "Mark the correct statement",
-    options: [
-      "Engine oil and oil pressure must be in green band prior to engine run up above 1500 RPM (1200 rpm)",
-      "Engine oil pressure must be out of the red band within 60 second (30 secs) of engine start.",
-      "Aircraft can be taxied with a flat shock strut with the permission of AME",
-      "All are correct"
-    ],
-    answer: ""
-  },
-  {
     question: "In case of avionics master switch failure",
     options: [
       "Pull the avionics circuit breaker",
