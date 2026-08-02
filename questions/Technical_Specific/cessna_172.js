@@ -101,16 +101,6 @@ const tech_specific_cessna_172 =
     answer: "Suction gauge"
   },
   {
-    question: "In a long flight, the maximum deviation in the compass due to precession error is",
-    options: [
-      "20°",
-      "25°",
-      "30°",
-      "40°"
-    ],
-    answer: ""
-  },
-  {
     question: "For maximum cabin heat",
     options: [
       "Cabin air knob pushed in",
