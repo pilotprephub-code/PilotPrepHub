@@ -51,16 +51,6 @@ const nav_inst_oxford_16 =
     answer: "is not usually influenced by the earth's magnetic field."
   },
   {
-    question: "",
-    options: [
-      "only answer 1 is correct.",
-      "answers 1 and 3 are correct.",
-      "answers 1, 2 and 3 are all correct.",
-      "none of the above answers are correct."
-    ],
-    answer: "answers 1, 2 and 3 are all correct."
-  },
-  {
     question: "Deviation due to coefficient A is mainly caused by:",
     options: [
       "hard iron force acting along the longitudinal axis.",
