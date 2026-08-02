@@ -31,16 +31,6 @@ const nav_inst_oxford_40 =
     answer: "roll command bar moves to right and centres when AFDS angle of bank to intercept has been achieved"
   },
   {
-    question: "",
-    options: [
-      "all 5",
-      "1 & 2",
-      "1, 2 & 3",
-      "1, 2, 3, & 4"
-    ],
-    answer: "1 & 2"
-  },
-  {
     question: "At 50 feet agl during an autoland, what happens to the glideslope signal?",
     options: [
       "continues to be actioned",
@@ -201,26 +191,6 @@ const nav_inst_oxford_40 =
     answer: "Decision height"
   },
   {
-    question: "",
-    options: [
-      "2 & 5",
-      "1 & 5",
-      "1 & 4",
-      "2 & 4"
-    ],
-    answer: "2 & 4"
-  },
-  {
-    question: "",
-    options: [
-      "1, 2 & 4",
-      "1, 4 & 5",
-      "1, 3 & 4",
-      "1, 2 & 3"
-    ],
-    answer: "1, 4 & 5"
-  },
-  {
     question: "An auto-land system which can continue to automatically land the aircraft after a single failure is called:",
     options: [
       "Fail passive",
@@ -301,16 +271,6 @@ const nav_inst_oxford_40 =
     answer: "and the auto-throttle control the approach at least until the roll-out."
   },
   {
-    question: "",
-    options: [
-      "2, 3 & 5",
-      "1 & 2",
-      "4 & 5",
-      "1 & 4"
-    ],
-    answer: "4 & 5"
-  },
-  {
     question: "Autoland Flare is initiated a",
     options: [
       "1500 ft",
@@ -319,36 +279,6 @@ const nav_inst_oxford_40 =
       "5 ft"
     ],
     answer: "50 ft"
-  },
-  {
-    question: "",
-    options: [
-      "1, 2 & 4",
-      "1, 2 & 5",
-      "1, 5 & 6",
-      "2, 4 & 6"
-    ],
-    answer: "1, 2 & 5"
-  },
-  {
-    question: "",
-    options: [
-      "1, 2 & 4",
-      "1, 2 & 5",
-      "2, 4 & 6",
-      "3, 4 & 5"
-    ],
-    answer: "3, 4 & 5"
-  },
-  {
-    question: "",
-    options: [
-      "1, 2 & 3",
-      "1, 2 & 4",
-      "1, 2 & 6",
-      "1, 3 & 5"
-    ],
-    answer: "1, 2 & 4"
   },
   {
     question: "An autopilot system whereby if one A/P fails cannot carry out an auto-land is called fail_____:",
@@ -421,26 +351,6 @@ const nav_inst_oxford_40 =
     answer: "it is fail safe and will disconnect"
   },
   {
-    question: "",
-    options: [
-      "1&2",
-      "2&3",
-      "3&4",
-      "4&1"
-    ],
-    answer: "4&1"
-  },
-  {
-    question: "",
-    options: [
-      "1 & 2",
-      "3 & 4",
-      "1, 2 & 3",
-      "2, 3 & 4"
-    ],
-    answer: "1 & 2"
-  },
-  {
     question: "Auto-trim is fitted to an autopilot:",
     options: [
       "To provide control about lateral axis",
@@ -449,26 +359,6 @@ const nav_inst_oxford_40 =
       "To correct for Mach tuck"
     ],
     answer: "To prevent snatching on disengaging A/P."
-  },
-  {
-    question: "",
-    options: [
-      "1, 2, 6",
-      "1, 4, 5",
-      "1, 2, 3, 4",
-      "3, 4, 5"
-    ],
-    answer: "1, 4, 5"
-  },
-  {
-    question: "",
-    options: [
-      "1 & 2",
-      "1 & 3",
-      "2 & 4",
-      "3 & 4"
-    ],
-    answer: "2 & 4"
   },
   {
     question: "When operating with the autopilot in ALT hold mode what happens if the Captain’s barometric altimeter pressure setting is increased.",
@@ -530,16 +420,6 @@ const nav_inst_oxford_40 =
     answer: "Increase pitch angle, turn left"
   },
   {
-    question: "",
-    options: [
-      "1 & 2",
-      "4 only",
-      "1 & 4",
-      "1, 2, 3 & 4"
-    ],
-    answer: "1, 2, 3 & 4"
-  },
-  {
     question: "What does the Mach trim system use to prevent ‘Mach Tuck’?",
     options: [
       "elevator",
@@ -548,16 +428,6 @@ const nav_inst_oxford_40 =
       "elevator/aileron/rudder"
     ],
     answer: "elevator"
-  },
-  {
-    question: "",
-    options: [
-      "1&2",
-      "2&3",
-      "1&4",
-      "3& 4"
-    ],
-    answer: "1&4"
   },
   {
     question: "When turning into a desired radial, FD bars indicate:",
