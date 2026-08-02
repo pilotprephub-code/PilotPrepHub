@@ -61,16 +61,6 @@ const nav_inst_oxford_10 =
     answer: "above the centre of gravity."
   },
   {
-    question: "",
-    options: [
-      "only 1, 2, 5 and 6 are correct.",
-      "only 1, 3, 5 and 6 are correct.",
-      "only 2, 4 and 5 are correct.",
-      "all are correct."
-    ],
-    answer: "all are correct."
-  },
-  {
     question: "During a sustained turn ……. the nearer magnetic pole, the effect of liquid swirl will ……. compass turning error.",
     options: [
       "away from; increase.",
