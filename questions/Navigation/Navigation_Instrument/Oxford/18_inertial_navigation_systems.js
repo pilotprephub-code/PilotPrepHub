@@ -51,16 +51,6 @@ const nav_inst_oxford_18 =
     answer: "illuminates steadily 2 minutes, in AUTO mode, before reaching the next waypoint."
   },
   {
-    question: "",
-    options: [
-      "all the above statements are true.",
-      "only (ii), (iii) and (iv) of the above statements are true.",
-      "only (i), (ii) and (iii) of the above statements are true.",
-      "only (ii) and (iii) of the above statements are true."
-    ],
-    answer: "only (ii) and (iii) of the above statements are true."
-  },
-  {
     question: "The computer of a north referenced Inertial Navigation System (INS) in flight, provides compensation for:",
     options: [
       "aircraft manoeuvres, real wander, apparent wander, transport wander.",
