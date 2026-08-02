@@ -11,4 +11,4 @@ const air_regulation_revision = [
             answer: "DGCA",
             explanation: "Answer A or B or C or D."
     }
-]
+];
