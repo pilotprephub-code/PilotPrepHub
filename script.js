@@ -32,7 +32,7 @@ let currentIndex = 0;
 let score = 0;
 
 // const API_URL = "http://localhost:5000/api";
-const API_URL = "https://YOUR-RENDER-URL.onrender.com/api";
+const API_URL = "https://pilotprephub-api.onrender.com/api";
 
 async function fetchSubjects() {
 	const res = await fetch(`${API_URL}/subjects`);
