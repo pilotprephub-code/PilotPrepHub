@@ -1,3 +1,5 @@
+console.log("script.js loaded");
+
 window.addEventListener("pageshow", function(event) {
 	if (event.persisted) {
 		window.location.reload();
@@ -24,17 +26,69 @@ if (isIndexPage) {
 
 
 
-
 let questions = [];
 
 let currentIndex = 0;
 let score = 0;
 
+const API_URL = "http://localhost:5000/api";
+
+async function fetchSubjects() {
+	const res = await fetch(`${API_URL}/subjects`);
+	return await res.json();
+}
+
+async function fetchSubSubjects(subject) {
+	const res = await fetch(
+		`${API_URL}/subjects/${encodeURIComponent(subject)}/subsubjects`
+	);
+	return await res.json();
+}
+
+async function fetchChapters(subject, subSubject) {
+	const res = await fetch(
+		`${API_URL}/chapters?subject=${encodeURIComponent(subject)}&subSubject=${encodeURIComponent(subSubject)}`
+	);
+	return await res.json();
+}
+
+async function fetchQuestions(subject, subSubject, chapter) {
+
+
+	const dbSubject = SUBJECT_MAP[subject] || subject;
+	const dbSub =
+		SUBSUBJECT_REVERSE_MAP?.[subject]?.[subSubject] || subSubject;
+
+	const url =
+		`${API_URL}/questions?subject=${encodeURIComponent(dbSubject)}&subSubject=${encodeURIComponent(dbSub)}&chapter=${encodeURIComponent(chapter)}`;
+
+	console.log("Frontend:");
+	console.log(subject, subSubject, chapter);
+
+	console.log("Backend:");
+	console.log(dbSubject, dbSub, chapter);
+
+	console.log(url);
+
+	const res = await fetch(url);
+
+	const data = await res.json();
+
+	console.log(data);
+
+	return data;
+}
 
 
 function loadAllQuestions() {
+
 	const form = document.getElementById("quizForm");
+
+	if (!form) return;
+
 	form.innerHTML = "";
+
+	const fragment = document.createDocumentFragment();
 
 	questions.forEach((q, index) => {
 		const div = document.createElement("div");
@@ -114,6 +168,8 @@ function loadAllQuestions() {
 
 	});
 
+	form.appendChild(fragment);
+
 	// reset radios
 	setTimeout(() => {
 		const form = document.getElementById("quizForm");
@@ -122,7 +178,8 @@ function loadAllQuestions() {
 }
 
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+
 	const isQuizPage = window.location.pathname.includes("quiz.html");
 
 	if (isQuizPage) {
@@ -131,13 +188,25 @@ document.addEventListener("DOMContentLoaded", () => {
 		const selectedSub = localStorage.getItem("selectedSub");
 		const selectedChapter = localStorage.getItem("selectedChapter");
 
+		console.log("Subject:", selectedSubject);
+		console.log("Sub:", selectedSub);
+		console.log("Chapter:", selectedChapter);
+
 		const title = document.getElementById("quizTitle");
 
 		if (title) {
-   		 	title.innerText = formatSubSubject(
-     		   	selectedChapter || selectedSub || selectedSubject
- 		   );
-		   title.style.visibility = "visible";
+
+			let displayTitle = selectedChapter || selectedSub || selectedSubject;
+
+			if (selectedChapter) {
+				displayTitle =
+					CHAPTER_MAP[selectedSubject]?.[selectedSub]?.[selectedChapter] ||
+					CHAPTER_MAP[selectedSubject]?.[selectedChapter] ||
+					selectedChapter;
+			}
+
+			title.innerText = formatSubSubject(displayTitle);
+			title.style.visibility = "visible";
 		}
 
 		if (!selectedSubject) {
@@ -145,59 +214,30 @@ document.addEventListener("DOMContentLoaded", () => {
 			return;
 		}
 
-		const subjectData = questionBank[selectedSubject];
-
-		// ✅ VALIDATION (Fix 1)
-		if (!Array.isArray(subjectData)) {
-
-			if (!selectedSub || !subjectData[selectedSub]) {
-				window.location.href = "index.html";
-				return;
-			}
-
-			// if (selectedSub !== "revision") {
-			// 	if (!selectedChapter || !subjectData[selectedSub][selectedChapter]) {
-			// 		window.location.href = "chapters.html";
-			// 		return;
-			// 	}
-			// }
-			const subData = subjectData[selectedSub];
-
-			if (!Array.isArray(subData)) {
-    			if (!selectedChapter || !subData[selectedChapter]) {
-        			window.location.href = "chapters.html";
-        			return;
-    			}
-			}
-		}
-
 		// reset answers
 		userAnswers = {};
 
-		// ✅ LOAD QUESTIONS
-		if (!Array.isArray(subjectData)) {
+		questions = await fetchQuestions(
+			selectedSubject,
+			selectedSub,
+			selectedChapter
+		);
 
-			// if (selectedSub === "revision") {
-			// 	questions = subjectData[selectedSub];
-			// } else {
-			// 	questions = subjectData[selectedSub][selectedChapter];
-			// }
-			const subData = subjectData[selectedSub];
-
-				if (Array.isArray(subData)) {
-   				 questions = subData;
-				} else {
-  				 questions = subData[selectedChapter];
-				}
-
-		} else {
-			questions = subjectData;
+		if (!questions || questions.length === 0) {
+			alert("No questions found.");
+			window.location.href = "chapters.html";
+			return;
 		}
 
 		const form = document.getElementById("quizForm");
 		if (form) form.innerHTML = "";
 
+		console.time("Render");
+
 		loadAllQuestions();
+
+		console.timeEnd("Render");
+
 		startTimer();
 	}
 
@@ -376,7 +416,197 @@ if (window.location.pathname.includes("result.html")) {
 }
 
 
-function showSubSubjects(subject, event) {
+async function loadSubjects() {
+
+	try {
+
+		const res = await fetch(`${API_URL}/subjects`);
+
+		const subjects = await res.json();
+
+		console.log(subjects);
+
+	} catch (err) {
+
+		console.error(err);
+
+	}
+
+}
+
+
+function createButton(text, className, index, onClick) {
+
+	const btn = document.createElement("button");
+
+	btn.innerText = formatSubSubject(text);
+
+	btn.classList.add(className);
+
+	btn.style.animationDelay = `${index * 0.1}s`;
+
+	btn.onclick = onClick;
+
+	return btn;
+
+}
+
+async function showAircraftButtons(subject, container) {
+
+	try {
+
+		const dbSubject = SUBJECT_MAP[subject] || subject;
+
+		const res = await fetch(
+			`${API_URL}/chapters?subject=${dbSubject}&subSubject=General`
+		);
+
+		const aircraft = await res.json();
+
+		container.innerHTML = "";
+
+		aircraft.forEach((chapter, index) => {
+
+			const display =
+				CHAPTER_MAP[subject]?.[chapter] || chapter;
+
+			const btn = createButton(
+
+				display,
+
+				"sub-btn",
+
+				index,
+
+				() => {
+
+					localStorage.setItem("selectedSubject", subject);
+					localStorage.setItem("selectedSub", "general");
+					localStorage.setItem("selectedChapter", chapter);
+
+					window.location.href = "quiz.html";
+
+				}
+
+			);
+
+			container.appendChild(btn);
+
+		});
+
+	} catch (err) {
+
+		console.error(err);
+
+	}
+
+}
+
+async function fetchSubSubjects(subject) {
+
+	const dbSubject = SUBJECT_MAP[subject] || subject;
+
+	const res = await fetch(
+		`${API_URL}/subjects/${dbSubject}/subsubjects`
+	);
+
+	return await res.json();
+
+}
+
+function renderSubSubjectButtons(subject, subSubjects, container) {
+
+	container.innerHTML = "";
+
+	// Natural sort once
+	naturalSort(subSubjects);
+
+	// Convert backend names -> frontend names
+	const mappedSubjects = [];
+
+	subSubjects.forEach(sub => {
+
+		let mappedSub;
+
+		if (SUBSUBJECT_MAP[subject]) {
+
+			mappedSub = SUBSUBJECT_MAP[subject][sub];
+
+			if (!mappedSub) return;
+
+		} else {
+
+			mappedSub = sub;
+
+		}
+
+		mappedSubjects.push({
+			backend: sub,
+			display: mappedSub
+		});
+
+	});
+
+	// Apply custom display order if defined
+	const order = DISPLAY_ORDER[subject];
+
+	if (order) {
+
+		mappedSubjects.sort((a, b) => {
+
+			return order.indexOf(a.display) - order.indexOf(b.display);
+
+		});
+
+	}
+
+	// Render buttons
+	mappedSubjects.forEach(({
+		backend,
+		display
+	}, index) => {
+
+		const btn = createButton(
+
+			display,
+
+			"sub-btn",
+
+			index,
+
+			() => {
+
+				localStorage.setItem("selectedSubject", subject);
+				localStorage.setItem("selectedSub", display);
+
+				localStorage.removeItem("selectedChapter");
+
+				if (DIRECT_TO_QUIZ[subject]?.includes(display)) {
+
+					localStorage.setItem(
+						"selectedChapter",
+						DIRECT_QUIZ_CHAPTER[subject][display]
+					);
+
+					window.location.href = "quiz.html";
+
+				} else {
+
+					window.location.href = "chapters.html";
+
+				}
+
+			}
+
+		);
+
+		container.appendChild(btn);
+
+	});
+
+}
+
+async function showSubSubjects(subject, event) {
 
 	// 🔥 remove active from all buttons
 	const allButtons = document.querySelectorAll("#subjects button");
@@ -386,51 +616,19 @@ function showSubSubjects(subject, event) {
 	event.target.classList.add("subject-active");
 
 	const subDiv = document.getElementById("subSubjects");
-	subDiv.innerHTML = "";
 
-	const subjectData = questionBank[subject];
+	if (SUBJECT_WITHOUT_SUBSUBJECT.includes(subject)) {
 
-	if (!Array.isArray(subjectData)) {
+		await showAircraftButtons(subject, subDiv);
 
-		// ✅ FIX: add index here
-		Object.keys(subjectData).forEach((sub, index) => {
+		return;
 
-			const btn = document.createElement("button");
-			btn.innerText = formatSubSubject(sub);
-
-			btn.classList.add("sub-btn");
-
-			// 🔥 stagger animation delay (NOW WORKS)
-			btn.style.animationDelay = `${index * 0.1}s`;
-
-			btn.onclick = () => {
-				localStorage.setItem("selectedSubject", subject);
-				localStorage.setItem("selectedSub", sub);
-
-				localStorage.removeItem("selectedChapter");
-
-				// if (sub === "revision") {
-				// 	window.location.href = "quiz.html";
-				// } else {
-				// 	window.location.href = "chapters.html";
-				// }
-				const subData = questionBank[subject][sub];
-
-				if (Array.isArray(subData)) {
-   				 window.location.href = "quiz.html";
-				} else {
-   				 window.location.href = "chapters.html";
-				}
-			};
-
-			subDiv.appendChild(btn);
-		});
-
-	} else {
-		goToQuiz(subject);
 	}
 
-	// console.log(questionBank.regulation);
+	const subSubjects = await fetchSubSubjects(subject);
+
+	renderSubSubjectButtons(subject, subSubjects, subDiv);
+
 }
 
 
@@ -470,91 +668,134 @@ function startTimer() {
 function formatSubSubject(str) {
 
 	if (customTitles[str]) {
-    	return customTitles[str];
+		return customTitles[str];
 	}
 
-    // Words that should stay lowercase (unless they're the first word)
-    const lowerCaseWords = [
-        "and", "or", "the", "of", "in", "on", "for", 
-        "to", "with", "a", "an", "by", "at", "from"
-    ];
+	// Words that should stay lowercase (unless they're the first word)
+	const lowerCaseWords = [
+		"and", "or", "the", "of", "in", "on", "for",
+		"to", "with", "a", "an", "by", "at", "from"
+	];
 
-    // Aviation abbreviations that should always be uppercase
-    const abbreviations = [
-        "dgca", "rtr", "cpl", "ppl", "atc", "ils", "vor",
-        "ndb", "vfr", "ifr", "vmc", "imc", "fir", "atis",
-        "met", "nav", "fto", "cfi", "afi", "ame", "fmg", 
+	// Aviation abbreviations that should always be uppercase
+	const abbreviations = [
+		"dgca", "rtr", "cpl", "ppl", "atc", "ils", "vor",
+		"ndb", "vfr", "ifr", "vmc", "imc", "fir", "atis",
+		"met", "nav", "fto", "cfi", "afi", "ame", "fmg",
 		"rk", "ic", "da", "pa", "adf", "vhf", "rmi", "gnss",
 		"tcas", "dr", "afcs", "dc", "ac", "ssr", "acas"
-    ];
+	];
 
-    return str
-        .replace(/_/g, " ")
-        .split(" ")
-        .map((word, index) => {
+	return str
+		.replace(/_/g, " ")
+		.split(" ")
+		.map((word, index) => {
 
-            const lower = word.toLowerCase();
+			const lower = word.toLowerCase();
 
-            // Always uppercase known abbreviations
-            if (abbreviations.includes(lower)) {
-                return lower.toUpperCase();
-            }
+			// Always uppercase known abbreviations
+			if (abbreviations.includes(lower)) {
+				return lower.toUpperCase();
+			}
 
-            // Keep small connector words lowercase (except first word)
-            if (index > 0 && lowerCaseWords.includes(lower)) {
-                return lower;
-            }
+			// Keep small connector words lowercase (except first word)
+			if (index > 0 && lowerCaseWords.includes(lower)) {
+				return lower;
+			}
 
-            // Preserve aircraft model numbers (G58, DA42, P2006T etc.)
-            if (/[0-9]/.test(word)) {
-                return word.charAt(0).toUpperCase() + word.slice(1);
-            }
+			// Preserve aircraft model numbers (G58, DA42, P2006T etc.)
+			if (/[0-9]/.test(word)) {
+				return word.charAt(0).toUpperCase() + word.slice(1);
+			}
 
-            // Normal title case
-            return lower.charAt(0).toUpperCase() + lower.slice(1);
+			// Normal title case
+			return lower.charAt(0).toUpperCase() + lower.slice(1);
 
-        })
-        .join(" ");
+		})
+		.join(" ");
 }
 
+function naturalSort(arr) {
 
-function loadChapters() {
+	return arr.sort((a, b) =>
+
+		a.localeCompare(b, undefined, {
+			numeric: true,
+			sensitivity: "base"
+		})
+
+	);
+
+}
+
+async function loadChapters() {
+
 	const subject = localStorage.getItem("selectedSubject");
 	const sub = localStorage.getItem("selectedSub");
 
-	const container = document.getElementById("chapterContainer");
+	const container =
+		document.getElementById("chapterContainer") ||
+		document.getElementById("subSubjects");
 
 	if (!subject || !sub || !container) return;
 
-	const data = questionBank[subject][sub];
+	const dbSubject = SUBJECT_MAP[subject] || subject;
+	const dbSub = SUBSUBJECT_REVERSE_MAP?.[subject]?.[sub] || sub;
+
+	console.log("Subject:", subject);
+	console.log("Sub:", sub);
+	console.log("DB Subject:", dbSubject);
+	console.log("DB Sub:", dbSub);
 
 	container.innerHTML = "";
 
-	Object.keys(data).forEach((chapter, index) => {
-		const btn = document.createElement("button");
+	try {
 
-		// btn.innerText = chapter
-		// 	.replaceAll("_", " ")
-		// 	.replace(/\b\w/g, c => c.toUpperCase());
+		console.log(`${API_URL}/chapters?subject=${dbSubject}&subSubject=${dbSub}`);
 
-		btn.innerText = formatSubSubject(chapter);
+		const res = await fetch(
+			`${API_URL}/chapters?subject=${encodeURIComponent(dbSubject)}&subSubject=${encodeURIComponent(dbSub)}`
+		);
 
+		const chapters = await res.json();
 
-		btn.classList.add("chapter-btn");
+		naturalSort(chapters);
 
-		// 🔥 animation delay
-		btn.style.animationDelay = `${index * 0.1}s`;
+		console.log(chapters);
 
-		btn.onclick = () => {
-			// localStorage.setItem("selectedChapter", chapter);
+		chapters.forEach((chapter, index) => {
 
-			localStorage.setItem("selectedChapter", chapter.toLowerCase());
-			localStorage.setItem("selectedFile", chapter + ".json");
-			window.location.href = "quiz.html";
-		};
+			const btn = document.createElement("button");
 
-		container.appendChild(btn);
-	});
+			console.log("Subject:", subject);
+			console.log("Sub:", sub);
+			console.log("Chapter:", chapter);
+			console.log("Mapped:", CHAPTER_MAP[subject]?.[chapter]);
+
+			// const displayChapter = CHAPTER_MAP[sub]?.[chapter] || CHAPTER_MAP[subject]?.[chapter] || chapter;
+
+			const displayChapter = CHAPTER_MAP[subject]?.[sub]?.[chapter] || chapter;
+
+			btn.innerText = formatSubSubject(displayChapter);
+
+			btn.classList.add("chapter-btn");
+			btn.style.animationDelay = `${index * 0.1}s`;
+
+			btn.onclick = () => {
+				localStorage.setItem("selectedChapter", chapter);
+				
+				window.location.href = "quiz.html";
+			};
+
+			container.appendChild(btn);
+
+		});
+
+	} catch (err) {
+
+		console.error(err);
+
+	}
 }
 
 
@@ -562,12 +803,18 @@ const betaBar = document.getElementById("betaBar");
 const closeBetaBar = document.getElementById("closeBetaBar");
 
 if (betaBar && closeBetaBar) {
-    closeBetaBar.addEventListener("click", () => {
-        betaBar.style.display = "none";
-    });
+	closeBetaBar.addEventListener("click", () => {
+		betaBar.style.display = "none";
+	});
 }
 
 
 if (window.location.pathname.includes("chapters.html")) {
 	loadChapters();
+}
+
+if (window.location.pathname.includes("module.html")) {
+
+	loadSubjects();
+
 }
