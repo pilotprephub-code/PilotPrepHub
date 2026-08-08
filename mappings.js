@@ -40,7 +40,8 @@ const DISPLAY_ORDER = {
 		"engines",
 		"airframes_and_systems",
 		"electrics_and_electronics",
-		"additional_practice_questions"
+		"additional_practice_questions",
+		"supplementary_questions",
 	]
 
 };
@@ -105,6 +106,7 @@ const SUBSUBJECT_MAP = {
 		"Engines_PowerPlant": "engines",
 		"Principles_of_Flight": "principles_of_flight",
 		"Red_Bird": "additional_practice_questions",
+		"Magic_Delta": "supplementary_questions"
 	},
 
 	technical_specific: {
@@ -152,7 +154,8 @@ const SUBSUBJECT_REVERSE_MAP = {
 		electrics_and_electronics: "Electrics_and_Electronics",
 		engines: "Engines_PowerPlant",
 		principles_of_flight: "Principles_of_Flight",
-		additional_practice_questions: "Red_Bird"
+		additional_practice_questions: "Red_Bird",
+		supplementary_questions: "Magic_Delta"
 	},
 
 	technical_specific: {
@@ -625,6 +628,14 @@ const CHAPTER_MAP = {
 
 		additional_practice_questions: {
 			"1_red_bird": "additional_practice_questions"
+		},
+
+		supplementary_questions: {
+			"1_magic_delta": "supplementary_paper_1",
+			"2_magic_delta": "supplementary_paper_2",
+			"3_magic_delta": "supplementary_paper_3",
+			"4_magic_delta": "supplementary_paper_4",
+			"5_magic_delta": "supplementary_paper_5",
 		}
 
 	},
